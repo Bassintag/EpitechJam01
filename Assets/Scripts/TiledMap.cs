@@ -16,6 +16,8 @@ public class TiledMap : MonoBehaviour {
     public int[,] map { private set; get; }
 
     public ArrayList entities { private set; get; } 
+
+    public EntityPlayer player { private set; get; }
     
     void Start()
     {
@@ -40,7 +42,10 @@ public class TiledMap : MonoBehaviour {
                     Entity entity = obj.GetComponent<Entity>();
                     entity.x = x;
                     entity.y = y;
-                    entities.Add(entity);
+                    if (entity.GetComponent<EntityPlayer>())
+                        player = (EntityPlayer)entity;
+                    else
+                        entities.Add(entity);
                     obj.GetComponent<Entity>().map = this;
                     map[x, y] = 1;
                     CreateTile(x, y, 1);

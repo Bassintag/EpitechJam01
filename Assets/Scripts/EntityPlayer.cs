@@ -12,7 +12,7 @@ public class EntityPlayer : Entity   {
         {
             foreach (Entity e in map.entities)
             {
-                if (e.isEnemy && (e.x == x && e.y == y ||
+                if (e.isEnemy && (/*e.x == x && e.y == y ||*/
                                   e.x == x + last.x && e.y == y + last.y))
                     GameManager.instance.combo = 1;
             }
