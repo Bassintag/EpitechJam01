@@ -37,7 +37,9 @@ public class TiledMap : MonoBehaviour {
                 obj = CreateTile(x, y, id);
                 if (Tiles[id].Entity)
                 {
-                    entities.Add(obj.GetComponent<Entity>());
+                    Entity entity = obj.GetComponent<Entity>();
+                    entity.Move(x, y);
+                    entities.Add(entity);
                     obj.GetComponent<Entity>().map = this;
                     map[x, y] = 1;
                     CreateTile(x, y, 1);

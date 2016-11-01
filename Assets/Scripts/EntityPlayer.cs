@@ -8,17 +8,17 @@ public class EntityPlayer : Entity   {
 
     public override void OnAction()
     {
-        Vector2 pos = (Vector2)transform.localPosition - new Vector2(0.5f, 0.5f);
-        if (map.GetAt((int)pos.x + (int)last.x, (int)pos.y + (int)last.y).Solid == false)
+        if (map.GetAt(x + (int)last.x, y + (int)last.y).Solid == false)
         {
-            if (map.GetAt((int)pos.x + (int)last.x, (int)pos.y + (int)last.y).Entity == true)
+            foreach (Entity e in map.entities)
             {
-                GameManager.instance.combo = 0;
+                if (e != this && (e.x == x && e.y == y ||
+                                  e.x == x + last.x && e.y == y + last.y))
+                    GameManager.instance.combo = 1;
             }
-            pos += last;
+            Move(x + (int)last.x, y + (int)last.y);
         }
-        transform.localPosition = (Vector3)pos + new Vector3(0.5f, 0.5f, -1f);
-        last = new Vector2(0, 0);
+        last = Vector2.zero;
     }
 
     void Update()

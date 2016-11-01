@@ -11,7 +11,7 @@ public class ComboText : MonoBehaviour {
 	    if (prev != GameManager.instance.combo)
         {
             prev = GameManager.instance.combo;
-            GetComponent<Text>().text = prev > 1 ? prev.ToString() : "";
+            GetComponent<Text>().text = prev.ToString();
         }
 	}
 }
