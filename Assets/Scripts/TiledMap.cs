@@ -14,10 +14,13 @@ public class TiledMap : MonoBehaviour {
     public Tile[] Tiles;
 
     public int[,] map { private set; get; }
+
+    public ArrayList entities { private set; get; } 
     
     void Start()
     {
         map = new int[Width, Height];
+        entities = new ArrayList();
         LoadLevel(Level);
         InitMap();
     }
@@ -25,14 +28,17 @@ public class TiledMap : MonoBehaviour {
     void InitMap()
     {
         int id;
+        Tile obj;
         for (int x = 0; x < Width; x++)
         {
             for (int y = 0; y < Height; y++)
             {
                 id = map[x, y];
-                CreateTile(x, y, id);
+                obj = CreateTile(x, y, id);
                 if (Tiles[id].Entity)
                 {
+                    entities.Add(obj.GetComponent<Entity>());
+                    obj.GetComponent<Entity>().map = this;
                     map[x, y] = 0;
                     CreateTile(x, y, 0);
                 }
@@ -40,12 +46,13 @@ public class TiledMap : MonoBehaviour {
         }
     }
 
-    void CreateTile(int x, int y, int id)
+    Tile CreateTile(int x, int y, int id)
     {
-        GameObject obj = Instantiate(Tiles[id].gameObject);
+        Tile obj = Instantiate(Tiles[id].gameObject).GetComponent<Tile>();
         obj.transform.parent = transform;
         obj.name = "Tile (" + id + ")";
         obj.transform.localPosition = new Vector2(x + .5f, y + .5f);
+        return (obj);
     }
 
     public Tile GetAt(int x, int y)
@@ -69,7 +76,7 @@ public class TiledMap : MonoBehaviour {
         using (reader)
         {
             int x = 0;
-            int y = 0;
+            int y = 1;
             while ((line = reader.ReadLine()) != null)
             {
                 string[] tiles = line.Split(',');
@@ -78,7 +85,7 @@ public class TiledMap : MonoBehaviour {
                     x = 0;
                     while (x < tiles.Length)
                     {
-                        map[x, y] = int.Parse(tiles[x]);
+                        map[x, Height - y] = int.Parse(tiles[x]);
                         x++;
                     }
                 }
