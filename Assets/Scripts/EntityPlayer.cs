@@ -8,15 +8,19 @@ public class EntityPlayer : Entity   {
 
     public override void OnAction()
     {
-        if (map.GetAt(x + (int)last.x, y + (int)last.y).Solid == false)
+        if (last != Vector2.zero && map.GetAt(x + (int)last.x, y + (int)last.y).Solid == false)
         {
             foreach (Entity e in map.entities)
             {
-                if (e != this && (e.x == x && e.y == y ||
+                if (e.isEnemy && (e.x == x && e.y == y ||
                                   e.x == x + last.x && e.y == y + last.y))
                     GameManager.instance.combo = 1;
             }
             Move(x + (int)last.x, y + (int)last.y);
+        }
+        else
+        {
+            GameManager.instance.combo = 1;
         }
         last = Vector2.zero;
     }
