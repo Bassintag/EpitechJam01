@@ -18,7 +18,7 @@ obj/
 *.user
 *.unityproj
 *.booproj
-Scenes/*
+Assets/Scenes/*
 
 # ============ #
 # OS generated #
