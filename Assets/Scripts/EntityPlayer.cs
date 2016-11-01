@@ -26,7 +26,7 @@ public class EntityPlayer : Entity   {
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            timer = 0.15f;
+            timer = 0.1f;
             if (Input.GetAxis("Vertical") > 0.8f)
                 last = new Vector2(0, 1);
             else if (Input.GetAxis("Vertical") < -0.8f)
