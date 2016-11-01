@@ -42,7 +42,6 @@ public class TiledMap : MonoBehaviour {
 
     void CreateTile(int x, int y, int id)
     {
-        Debug.Log(id);
         GameObject obj = Instantiate(Tiles[id].gameObject);
         obj.transform.parent = transform;
         obj.name = "Tile (" + id + ")";
