@@ -5,10 +5,13 @@ public class EntityPlayer : Entity   {
 
     Vector2 last;
     float timer = 0f;
+    public int stun = 0;
 
     public override void OnAction()
     {
-        if (last != Vector2.zero && map.GetAt(x + (int)last.x, y + (int)last.y).Solid == false)
+        if (stun > 0)
+            stun--;
+        else if (last != Vector2.zero && map.GetAt(x + (int)last.x, y + (int)last.y).Solid == false)
         {
             foreach (Entity e in map.entities)
             {
