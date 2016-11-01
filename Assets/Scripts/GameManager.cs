@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
     public Camera mainCamera;
     public ImageList buttonHistory;
 
+    public bool end { get; set; }
+
     public int combo { get; set; }
 
     public float currentDelay
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
+        end = false;
         combo = 1;
         if (instance)
             Destroy(this);
@@ -36,7 +39,18 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
+        if (end)
+            return;
         cooldown -= Time.deltaTime;
+        for (int i = 0; i < map.entities.Count; i++)
+        {
+            if (((Entity)map.entities[i]).dead)
+            {
+                Destroy(((Entity)map.entities[i]).gameObject);
+                map.entities.RemoveAt(i);
+                i--;
+            }
+        }
         if (cooldown <= 0)
         {
             combo++;
