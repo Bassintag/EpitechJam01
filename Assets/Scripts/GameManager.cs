@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour {
 
     public TiledMap map;
     public float minDelay = 1f;
-    public float maxDelay = 2f;
+    public float maxDelay = 0.5f;
 
     float cooldown;
 
