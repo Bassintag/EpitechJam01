@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
     {
         get
         {
-            return Mathf.Max(maxDelay - (combo - 1) * (1f / maxCombo) * (maxDelay - minDelay), minDelay);
+            return Mathf.Max(maxDelay - combo * (1f / maxCombo) * (maxDelay - minDelay), minDelay);
         }
         private set { }
     }
