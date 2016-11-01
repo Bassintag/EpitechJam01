@@ -5,8 +5,8 @@ public abstract class Entity : MonoBehaviour {
 
     public bool isEnemy;
 
-    public int x { private set; get; }
-    public int y { private set; get; }
+    public int x { set; get; }
+    public int y { set; get; }
 
     public TiledMap map { get; set; }
 
