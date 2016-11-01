@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a2b5a3d4c2bdbc24eb7da2448ee5120f
-timeCreated: 1478006107
+guid: 38209d98d7af256408d820147e0a6c60
+timeCreated: 1478007727
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,7 +9,8 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontNames: []
+  fontNames:
+  - Feast of Flesh BB
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
