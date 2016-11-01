@@ -40,5 +40,7 @@ public class EntityPlayer : Entity   {
             else if (Input.GetAxis("Horizontal") < -0.8f)
                 last = new Vector2(-1, 0);
         }
+
+        GameManager.instance.mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 }
