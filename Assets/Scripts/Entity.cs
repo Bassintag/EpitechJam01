@@ -10,6 +10,8 @@ public abstract class Entity : MonoBehaviour {
 
     public TiledMap map { get; set; }
 
+    public bool dead { get; set; }
+
     public abstract void OnAction();
 
     public void Move(int x, int y)

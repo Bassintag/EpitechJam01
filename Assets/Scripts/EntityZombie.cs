@@ -32,10 +32,9 @@ public class EntityZombie : Entity{
         Move(x + movx, y + movy);
         if (x == map.player.x && y == map.player.y)
         {
-            map.entities.Remove(this);
             map.player.stun = 2;
             GameManager.instance.combo = 1;
-            Destroy(this.gameObject);
+            dead = true;
         }
     }
 
@@ -45,10 +44,9 @@ public class EntityZombie : Entity{
         movy = 0;
         if (x == map.player.x && y == map.player.y)
         {
-            map.entities.Remove(this);
             map.player.stun = 2;
             GameManager.instance.combo = 1;
-            Destroy(this.gameObject);
+            dead = true;
         }
         if (move && Mathf.Abs(x - map.player.x) < 15 && Mathf.Abs(y - map.player.y) < 8)
         {

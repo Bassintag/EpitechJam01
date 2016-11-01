@@ -7,7 +7,9 @@ public class Timer : MonoBehaviour {
 
     void Update()
     {
+        if (GameManager.instance.end)
+            return;
         timer += Time.deltaTime;
-        GetComponent<Text>().text = timer.ToString("0.00");
+        GetComponent<Text>().text = timer.ToString("0.00S");
     }
 }
