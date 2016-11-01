@@ -13,6 +13,21 @@ public class TiledMap : MonoBehaviour {
     void Start()
     {
         map = new int[Width, Height];
+        InitMap();
+    }
+
+    void InitMap()
+    {
+        for (int x = 0; x < Width; x++)
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                GameObject obj = Instantiate(Tiles[map[x, y]]);
+                obj.transform.parent = transform;
+                obj.name = "Tile (" + map[x, y] + ")";
+                obj.transform.localPosition = new Vector2(x + .5f, y + .5f);
+            }
+        }
     }
     
     public void SetAt(int x, int y, int value)
