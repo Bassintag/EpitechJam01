@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public float maxDelay = 2f;
     public int maxCombo = 10;
     public Camera mainCamera;
+    public ImageList buttonHistory;
 
     public int combo { get; set; }
 
