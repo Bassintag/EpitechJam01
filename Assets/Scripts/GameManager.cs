@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
     {
         get
         {
-            return Mathf.Max(maxDelay - (float)(combo - 1) * (1f / (float)maxCombo) * (float)(maxDelay - minDelay), minDelay);
+            return Mathf.Max(maxDelay - combo * (1f / maxCombo) * (maxDelay - minDelay), minDelay);
         }
         private set { }
     }
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
             cooldown = currentDelay;
             foreach (Entity e in map.entities)
                 e.OnAction();
+            mainCamera.GetComponent<DiscoBackground>().OnAction();
         }
     }
 }
