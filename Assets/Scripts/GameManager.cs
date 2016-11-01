@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
             cooldown = currentDelay;
             foreach (Entity e in map.entities)
                 e.OnAction();
+            map.player.OnAction();
             mainCamera.GetComponent<DiscoBackground>().OnAction();
         }
     }
